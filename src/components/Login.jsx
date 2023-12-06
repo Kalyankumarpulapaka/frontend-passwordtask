@@ -7,10 +7,12 @@ import { toast } from 'react-toastify';
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+  
 
   const [email,setEmail]  = useState("")
   const [password,setPassword] = useState("")
@@ -18,6 +20,7 @@ function Login() {
 
   const existUser  = async(e)=>{
     e.preventDefault()
+    setLoading(true)
     try {
       let res = await AxiosService.post('/user/login',{
         email,
@@ -34,12 +37,20 @@ function Login() {
       console.log(error)
       toast.error("Incorrct email or password")
     }
+    finally{
+      setLoading(false)
+    }
   }
 
   
 
   return (
     <>
+    {loading && (
+        <div className="loading-screen">
+          <div className="loading-spinner"></div>
+        </div>
+      )}
       <div className="login" style={{height:"600px",paddingTop:"35px"} }>
       <div className="avatar" style={{width:"100px", height:"100px"}}>
         <img src={icon} />
@@ -82,7 +93,7 @@ function Login() {
 
 </div>
 
-          <button type="submit" onClick={(e)=>existUser(e)}>LOGIN</button>
+          <button type="submit"  onClick={(e)=>existUser(e)} > LOGIN</button>
 
           <p style={{ color: '#157ae1', fontSize: '18px' }}>
             Create Account ?&nbsp; &nbsp;{' '}

@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 function Resetpassword() {
 
     const [showPassword, setShowPassword] = useState(false);
-
+    const [loading, setLoading] = useState(false)
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -23,6 +23,7 @@ function Resetpassword() {
 
     const resetpassword = async(e)=>{
         e.preventDefault()
+        setLoading(true)
         try {
             let res = await AxiosService.post(`/user/reset-password/${randomString}/${expirationTimestamp}`,{
                 newPassword:password
@@ -41,6 +42,9 @@ function Resetpassword() {
               }
 
         }
+        finally{
+          setLoading(false)
+        }
 
     }
 
@@ -48,7 +52,11 @@ function Resetpassword() {
 
 
     <>
-    
+    {loading && (
+        <div className="loading-screen">
+          <div className="loading-spinner"></div>
+        </div>
+      )}
     <div className="login" style={{height:"530px",paddingTop:"50px"} }>
       <div className="avatar" style={{width:"100px", height:"100px"}}>
         <img src={icon} />

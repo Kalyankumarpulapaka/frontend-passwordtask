@@ -11,9 +11,10 @@ function Forgetpassword() {
 let navigate = useNavigate()
 
 const [email,setEmail] = useState("")
-
+const [loading, setLoading] = useState(false)
 const forgetpassword = async(e)=>{
     e.preventDefault()
+    setLoading(true)
     try {
         let res = await AxiosService.post('/user/forget-password',{
             email
@@ -26,10 +27,20 @@ const forgetpassword = async(e)=>{
         console.log(error)
         toast.error("Invalid email")
     }
+    finally{
+      setLoading(false)
+    }
 }
   return (
     <>
     
+
+    {loading && (
+        <div className="loading-screen">
+          <div className="loading-spinner"></div>
+        </div>
+      )}
+      
     <div className="login" style={{height:"510px"}}>
     <div className="avatar" style={{width:"100px", height:"100px"}}>
         <img src={icon} />

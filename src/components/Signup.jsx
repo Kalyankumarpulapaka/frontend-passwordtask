@@ -7,7 +7,7 @@ import "./App.css";
 
 function Signup() {
   const [showPassword, setShowPassword] = useState(false);
-  
+  const [loading, setLoading] = useState(false)
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -20,6 +20,7 @@ function Signup() {
 
   const createUser = async(e)=>{
     e.preventDefault()
+    setLoading(true)
     try {
       let res = await AxiosService.post('/user/signup',{
         userName,
@@ -35,10 +36,18 @@ function Signup() {
       console.log(error)
       toast.error("Fill all the detials")
     }
+    finally{
+      setLoading(false)
+    }
   }
 
   return (
     <>
+     {loading && (
+        <div className="loading-screen">
+          <div className="loading-spinner"></div>
+        </div>
+      )}
       <div className="login" style={{ height: "635px", paddingTop: "11px" }}>
         <div className="avatar" style={{ width: "100px", height: "100px" }}>
           <img src={icon} />
