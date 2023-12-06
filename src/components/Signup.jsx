@@ -39,7 +39,7 @@ function Signup() {
 
   return (
     <>
-      <div className="login" style={{ height: "635", paddingTop: "11px" }}>
+      <div className="login" style={{ height: "635px", paddingTop: "11px" }}>
         <div className="avatar" style={{ width: "100px", height: "100px" }}>
           <img src={icon} />
         </div>
