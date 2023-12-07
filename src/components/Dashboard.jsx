@@ -116,7 +116,7 @@ function Dashboard() {
       
    
       
-      <div className="sign " style={{paddingBottom:"180px"}} >
+      <div className="sign " id='sign' style={{paddingBottom:"180px"}} >
       <div className='wel'>
        WELCOME
     </div>
