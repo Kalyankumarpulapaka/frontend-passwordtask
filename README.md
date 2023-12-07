@@ -70,10 +70,7 @@ Contributions to the project are welcome! Users can contribute by reporting issu
 
 Include the license information for the project (e.g., MIT License, GNU General Public License, etc.).
 
-This overview provides a comprehensive understanding of the "Password Reset" project, its functionalities, technologies used, and guidelines for contributors and users.
-# Password-Reset
 
-The "Password Reset" project is a web application built using the MERN (MongoDB, Express.js, React, Node.js) stack that facilitates user authentication functionalities such as signup, login, and a password reset mechanism.
 
 # React + Vite
 
