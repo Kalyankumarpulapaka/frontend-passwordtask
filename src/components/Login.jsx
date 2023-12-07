@@ -75,8 +75,8 @@ function Login() {
             </span>
            </div>
 
-           <div style={{display:'flex',marginTop:"px"}}>
-            <input style={{width:"15px",margin:"-18px 5px 0px 0px"}}
+           <div  id='ch' style={{display:'flex',marginTop:"px"}}>
+            <input style={{width:"15px",margin:"-18px 6px 0px 0px"}}
               type="checkbox"
               checked={showPassword}
               onChange={togglePasswordVisibility}
